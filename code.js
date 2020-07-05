@@ -2,7 +2,7 @@ function init()
 {
     var d = new Date();
     var x = document.createElement("h1");
-    var t = document.createTextNode(getWeekDay() + " Workout (" + d.getDate() + "/" + getMonth + ")");
+    var t = document.createTextNode(getWeekDay() + " Workout (" + d.getDate() + "/" + getMonth() + ")");
     x.appendChild(t);
     document.body.appendChild(x);
 }
