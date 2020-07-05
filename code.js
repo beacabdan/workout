@@ -6,11 +6,13 @@ function init()
     x.appendChild(t);
     document.body.appendChild(x);
 
-    var btn = document.createElement("btn1");
+    var btn = document.createElement("btn");
+    btn.classList.add("w3-button w3-red");
     t = document.createTextNode("WORKOUT OF THE DAY")
     document.body.appendChild(btn);
 
-    btn = document.createElement("btn2");
+    btn = document.createElement("btn");
+    btn.classList.add("w3-button w3-red");
     t = document.createTextNode("LIGHT CONDITIONING")
     document.body.appendChild(btn);
 
