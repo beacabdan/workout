@@ -19,7 +19,7 @@ function getWeekDay()
     weekday[6] = "Saturday";
 
     var d = new Date();
-    return month[d.getDay()]
+    return weekday[d.getDay()]
 }
 
 function getMonth()
