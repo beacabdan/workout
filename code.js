@@ -2,24 +2,28 @@ function init()
 {
     var d = new Date();
     var x = document.createElement("h1");
-    var t = document.createTextNode(getWeekDay() + " Workout (" + d.getDate() + "/" + getMonth() + ")");
+    var t = document.createTextNode(getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")");
     x.appendChild(t);
     document.body.appendChild(x);
+
+    whichWorkout();
+}
+
+function whichWorkout()
+{
+    var cathegory = ["cardio", "HIIT", "pilates", "yoga", "weight training"]
+    var day = getDayOfYear()
+    var workout = day % 5;
+    var t = document.createTextNode("Workout cathegory: " + cathegory[workout]);
+    document.body.appendChild(t);
 }
 
 function getWeekDay()
 {
-    var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
     var d = new Date();
-    return weekday[d.getDay()]
+    return weekday[d.getDay()];
 }
 
 function getMonth()
@@ -39,5 +43,15 @@ function getMonth()
     month[11] = "December";
   
     var d = new Date();
-    return month[d.getMonth()]
+    return month[d.getMonth()];
+  }
+
+  function getDayOfYear()
+  {
+    var now = new Date();
+    var start = new Date(now.getFullYear(), 0, 0);
+    var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+    var oneDay = 1000 * 60 * 60 * 24;
+    var day = Math.floor(diff / oneDay);
+    return day;
   }
