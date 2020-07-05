@@ -1,7 +1,7 @@
 function init()
 {
     var d = new Date();
-    var x = $("#mainTitle");
+    var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")";
 
     var btn = document.createElement("btn");
