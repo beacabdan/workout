@@ -6,6 +6,14 @@ function init()
     x.appendChild(t);
     document.body.appendChild(x);
 
+    var btn = document.createElement("btn1");
+    t = document.createTextNode("WORKOUT OF THE DAY")
+    document.body.appendChild(btn);
+
+    btn = document.createElement("btn2");
+    t = document.createTextNode("LIGHT CONDITIONING")
+    document.body.appendChild(btn);
+
     whichWorkout();
 }
 
@@ -14,8 +22,15 @@ function whichWorkout()
     var cathegory = ["cardio", "HIIT", "pilates", "yoga", "weight training"]
     var day = getDayOfYear()
     var workout = day % 5;
-    var t = document.createTextNode("Workout cathegory: " + cathegory[workout]);
+    var t = document.createTextNode("Today's focus: " + cathegory[workout]);
     document.body.appendChild(t);
+    
+    if (workout == 0) cardioWorkout();
+}
+
+function cardioWorkout()
+{
+    var exercises = [];
 }
 
 function getWeekDay()
