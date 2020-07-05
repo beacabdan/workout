@@ -1,4 +1,7 @@
-var x = document.createElement("H1");
-var t = document.createTextNode("Welcome to My Homepage");
-x.appendChild(t);
-document.body.appendChild(x);
+function init()
+{
+    var x = document.createElement("h1");
+    var t = document.createTextNode("Hello");
+    x.appendChild(t);
+    document.body.appendChild(x);
+}
