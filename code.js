@@ -1,7 +1,9 @@
 function init()
 {
+    var x = $("#mainTitle");
+
     var d = new Date();
-    var x = document.createElement("h1");
+    // var x = document.createElement("h1");
     var t = document.createTextNode(getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")");
     x.appendChild(t);
     document.body.appendChild(x);
@@ -26,8 +28,10 @@ function whichWorkout()
     var cathegory = ["cardio", "HIIT", "pilates", "yoga", "weight training"]
     var day = getDayOfYear()
     var workout = day % 5;
+    var p = document.createElement("p");
     var t = document.createTextNode("Today's focus: " + cathegory[workout]);
-    document.body.appendChild(t);
+    p.appendChild(t);
+    document.body.appendChild(p);
     
     if (workout == 0) cardioWorkout();
 }
