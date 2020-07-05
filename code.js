@@ -4,11 +4,6 @@ function init()
     var x = $("#mainTitle");
     x.innerText = getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")";
 
-    // var x = document.createElement("h1");
-    // var t = document.createTextNode(getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")");
-    // x.appendChild(t);
-    // document.body.appendChild(x);
-
     var btn = document.createElement("btn");
     btn.classList.add("w3-button");
     btn.classList.add("w3-hover-red");
