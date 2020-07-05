@@ -1,26 +1,27 @@
 function init()
 {
-    var x = $("#mainTitle");
-
     var d = new Date();
+    var x = $("#mainTitle");
+    x.innerText = getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")";
+
     // var x = document.createElement("h1");
-    var t = document.createTextNode(getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")");
-    x.appendChild(t);
-    document.body.appendChild(x);
+    // var t = document.createTextNode(getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")");
+    // x.appendChild(t);
+    // document.body.appendChild(x);
 
     var btn = document.createElement("btn");
     btn.classList.add("w3-button");
     btn.classList.add("w3-hover-red");
     t = document.createTextNode("WORKOUT OF THE DAY")
+    btn.appendChild(t);
     document.body.appendChild(btn);
 
     btn = document.createElement("btn");
     btn.classList.add("w3-button");
     btn.classList.add("w3-hover-red");
     t = document.createTextNode("LIGHT CONDITIONING")
+    btn.appendChild(t);
     document.body.appendChild(btn);
-
-    whichWorkout();
 }
 
 function whichWorkout()
