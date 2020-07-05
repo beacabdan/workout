@@ -7,12 +7,14 @@ function init()
     document.body.appendChild(x);
 
     var btn = document.createElement("btn");
-    btn.classList.add("w3-button w3-red");
+    btn.classList.add("w3-button");
+    btn.classList.add("w3-hover-red");
     t = document.createTextNode("WORKOUT OF THE DAY")
     document.body.appendChild(btn);
 
     btn = document.createElement("btn");
-    btn.classList.add("w3-button w3-red");
+    btn.classList.add("w3-button");
+    btn.classList.add("w3-hover-red");
     t = document.createTextNode("LIGHT CONDITIONING")
     document.body.appendChild(btn);
 
