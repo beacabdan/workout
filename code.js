@@ -4,19 +4,7 @@ function init()
     var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")";
 
-    var btn = document.createElement("btn");
-    btn.classList.add("w3-button");
-    btn.classList.add("w3-hover-red");
-    t = document.createTextNode("WORKOUT OF THE DAY")
-    btn.appendChild(t);
-    document.body.appendChild(btn);
-
-    btn = document.createElement("btn");
-    btn.classList.add("w3-button");
-    btn.classList.add("w3-hover-red");
-    t = document.createTextNode("LIGHT CONDITIONING")
-    btn.appendChild(t);
-    document.body.appendChild(btn);
+    
 }
 
 function whichWorkout()
