@@ -11,29 +11,28 @@
             font-family: "Roboto";
         }
         h1 {letter-spacing: 4px}
-        .w3-row-padding img {margin-bottom: 12px}
     </style>
     <script type="text/javascript" src="code.js"></script>
 </head>
 
 <body>
-  <div class="w3-content" style="max-width:1000px; margin-bottom: 128px;">
-    <!-- Header -->
+  <!-- Header -->
     <header class="w3-panel w3-center w3-opacity" style="padding:64px 16px">
       <h1 class="w3-xlarge" id="mainTitle" style="text-transform: uppercase">Titulo</h1>
-      <h1>El entrenamiento de hoy será...</h1>
+      <h1 class="w3-hide-small">El entrenamiento de hoy será...</h1>
+      <h1 class="w3-hide-medium w3-hide-large">Entrenamiento:</h1>
 
       <div class="w3-padding-32">
         <div class="w3-bar w3-border">
           <button class="w3-button w3-hover-black" id="wod">Workout of the day</button>
-          <button class="w3-button w3-hover-black" id="light">Tonificación light</button>
+          <button class="w3-button w3-hover-black" id="light">Tonificación</button>
           <button class="w3-button w3-hover-black" disabled>Hoy paso de deporte</button>
         </div>
       </div>
     </header>
     
     <!-- The Band Section -->
-    <div class="w3-container w3-content w3-center" id="band">
+    <div class="w3-container w3-content w3-center w3-light-grey" style="max-width: 100%; padding: 64px" id="band">
       <h2 class="w3-wide">MOTIVO DEL DÍA PARA ENTRENAR</h2>
       <p class="w3-opacity"><i>Además, nos gusta:</i></p>
       <p class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -42,15 +41,15 @@
       <div class="w3-row w3-padding-32">
         <div class="w3-third">
           <p>Fácil</p>
-          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" class="w3-margin-bottom" alt="Random Name" style="width:80%">
         </div>
         <div class="w3-third">
           <p>Útil</p>
-          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" class="w3-margin-bottom" alt="Random Name" style="width:80%">
         </div>
         <div class="w3-third">
           <p>Postu</p>
-          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" class="w3-round" alt="Random Name" style="width:60%">
+          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" alt="Random Name" style="width:80%">
         </div>
       </div>
     </div>
@@ -90,7 +89,7 @@
         </div>
       </div>
     </div>
-  </div>
+  
 
   <!-- Automatic Slideshow Images -->
   <div class="mySlides w3-display-container w3-center">

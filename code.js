@@ -4,7 +4,7 @@ function init()
 {
     var d = new Date();
     var x = document.getElementById("mainTitle");
-    x.innerText = getWeekDay() + ", " + getMonth() + " " + d.getDate();
+    x.innerText = getWeekDay() + ", " + d.getDate() + " de " + getMonth();
 
     carousel();
 }
@@ -29,7 +29,7 @@ function cardioWorkout()
 
 function getWeekDay()
 {
-    var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var weekday = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 
     var d = new Date();
     return weekday[d.getDay()];
@@ -38,18 +38,18 @@ function getWeekDay()
 function getMonth()
 {
     var month = new Array(12);
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
+    month[0] = "Enero";
+    month[1] = "Febrero";
+    month[2] = "Marzo";
+    month[3] = "Abril";
+    month[4] = "Mayo";
+    month[5] = "Junio";
+    month[6] = "Julio";
+    month[7] = "Agosto";
+    month[8] = "Septiembre";
+    month[9] = "Octubre";
+    month[10] = "Noviembre";
+    month[11] = "Diciembre";
   
     var d = new Date();
     return month[d.getMonth()];
