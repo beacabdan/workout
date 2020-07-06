@@ -6,6 +6,14 @@ function init()
     var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + ", " + d.getDate() + " de " + getMonth();
 
+    fetch("motivacion.json").then(function(response) { return response.json();
+	}).then(function(data) {
+		motivacionArray = data;
+    });
+    console.log(motivacionArray)
+    
+    document.getElementById("demo").innerText = motivacionArray.beneficios;
+
     carousel();
 }
 
