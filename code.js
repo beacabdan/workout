@@ -1,4 +1,5 @@
 var carouselIndex = 0;
+var motivacion = null;
 
 function init()
 {
@@ -6,12 +7,11 @@ function init()
     var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + ", " + d.getDate() + " de " + getMonth();
 
-    $.getJSON("https://beacabdan.github.io/workout/motivacion.json", function(data) {
-        
-        var text = `Date: ${data.date}<br>
-                    Time: ${data.time}`
-        $("#motivacion").html(text);
+    $.getJSON("https://raw.githubusercontent.com/beacabdan/workout/master/motivacion.json", function(data) {
+        motivacion = data;
+        document.getElementById("motivacion").innerText = motivacion.beneficios[Math.floor(Math.random()*motivacion.beneficios.length)]
     });
+    
 
     carousel();
 }
