@@ -14,7 +14,7 @@ function init()
 
 function addMotivation()
 {
-    document.getElementById("motivacion").innerHTML = motivacion.beneficios[Math.floor(Math.random()*motivacion.beneficios.length)] + "</br>Además, el deporte tiene tres cualidades que nos apasionan a todos:"
+    document.getElementById("motivacion").innerHTML = motivacion.beneficios[Math.floor(Math.random()*motivacion.beneficios.length)] + "</br>Además, el deporte tiene tres cualidades que nos apasionan a todas:"
 }
 
 function whichWorkout()
