@@ -18,16 +18,18 @@
 
 <body>
   <!-- Header -->
-    <header class="w3-panel w3-center w3-opacity" style="padding:64px 16px">
+    <header class="w3-panel w3-center" style="padding:64px 16px">
+      <div class="w3-opacity">
       <h1 class="w3-xlarge" id="mainTitle" style="text-transform: uppercase">Titulo</h1>
       <h1 class="w3-hide-small">El entrenamiento de hoy</h1>
       <h1 class="w3-hide-medium w3-hide-large">Entrenamiento:</h1>
+    </div>
 
       <div class="w3-padding-32">
         <div class="w3-bar w3-border">
-          <button class="w3-button w3-hover-black" id="wod">Workout of the day</button>
-          <button class="w3-button w3-hover-black" id="light">Tonificación</button>
-          <button class="w3-button w3-hover-black" disabled>Hoy paso de deporte</button>
+          <button class="w3-button w3-hover-red" id="wod">Workout of the day</button>
+          <button class="w3-button w3-hover-red" id="light">Tonificación</button>
+          <button class="w3-button w3-hover-red" disabled>Hoy paso de deporte</button>
         </div>
       </div>
     </header>
@@ -37,19 +39,19 @@
       <div class="w3-container w3-content w3-center w3-light-grey" style="max-width: 100%; padding: 64px" id="band">
         <h2 class="w3-wide">MOTIVACIÓN DIARIA</h2>
         <p class="w3-opacity"><i>Además de gustarnos el deporte...</i></p>
-        <p class="w3-justify" id="motivacion">Texto sobre motivación aquí.</p>
+          <p class="w3-justify" id="motivacion">Texto sobre motivación aquí.</p>
         <div class="w3-row w3-padding-32">
           <div class="w3-third">
             <p>Fácil</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/facil.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:80%">
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/facil.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:60%">
           </div>
           <div class="w3-third">
             <p>Útil</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/patada.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:80%">
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/patada.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:60%">
           </div>
           <div class="w3-third">
-            <p>Postureo</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/selfie.jpg" class="w3-hover-opacity" alt="Random Name" style="width:80%">
+            <p>Posturil</p>
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/selfie.jpg" class="w3-hover-opacity" alt="Random Name" style="width:60%">
           </div>
         </div>
       </div>
@@ -66,10 +68,10 @@
     </section>
 
     <!-- WORKOUT -->
-    <div class="w3-main" id="wod" style="display: none;">
+    <div class="w3-main" id="wod-section" style="display: none;">
       <div class="w3-row">
         <div class="w3-twothird w3-container">
-          <h1 class="w3-text-grey">Heading</h1>
+          <h1 class="w3-text-grey">Ejercicio X</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat. Lorem ipsum
@@ -85,7 +87,7 @@
 
       <div class="w3-row w3-padding-64">
         <div class="w3-twothird w3-container">
-          <h1 class="w3-text-grey">Heading</h1>
+          <h1 class="w3-text-grey">Ejercicio Y</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat. Lorem ipsum
@@ -102,27 +104,50 @@
   
 
   <!-- Automatic Slideshow Images -->
+  <section id="slideshow">
   <div class="mySlides w3-display-container w3-center">
-    <img src="https://blog.daveasprey.com/wp-content/uploads/2018/12/30-Days-to-a-Bulletproof-Body-Workout-Plan_header-752x401.jpg" style="width:100%">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/core.png" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Los Angeles</h3>
-      <p><b>We had the best time playing at Venice Beach!</b></p>   
+      <h3>Esos cores fuertes</h3>
+      <p><b>No hay nada que desmotive más que darte cuenta de que ya no puedes hacer tantas abdominales como antes.</b></p>   
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="https://cdn.cnn.com/cnnnext/dam/assets/200313132112-homeworkoutlead-live-video.jpg" style="width:100%">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/equipamiento2.png" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Los Angeles</h3>
-      <p><b>We had the best time playing at Venice Beach!</b></p>   
+      <h3>Racks de pesas</h3>
+      <p><b>Recordad dejarlas siempre en su sitio, no seáis salvajes que no hace ninguna falta.</b></p>   
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="https://cdn.images.express.co.uk/img/dynamic/11/590x/secondary/Gym-workout-1036493.jpg" style="width:100%">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/cremitas.png" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Los Angeles</h3>
-      <p><b>We had the best time playing at Venice Beach!</b></p>   
+      <h3>Cremitas y potingues</h3>
+      <p><b>Entra parte de la definición de cuidarse por el tema mindfulness, que si no...</b></p>   
     </div>
   </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/runningshoes.png" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Salir a correr</h3>
+      <p><b>¡Huye de tus responsabilidades! Huye de tu casa. Huye de todos o, al menos, prepárate para hacerlo.</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/core2.png" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Esos cores fuertes</h3>
+      <p><b>Ver como los demás aguantan más la plancha que tú, también desmotiva bastante. O motiva, depende de lo competitiva que seas.</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/equipamiento.png" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Equipamiento</h3>
+      <p><b>Obviamente en el gimnasio se estaba mejor y todo el material estaba disponible... o no.</b></p>   
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">

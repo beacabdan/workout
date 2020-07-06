@@ -1,15 +1,46 @@
 var carouselIndex = 0;
+var carouselTimer = null;
 var motivacion = null;
 
 function init()
 {
+    //change title
     var d = new Date();
     var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + ", " + d.getDate() + " de " + getMonth();
 
+    //change motivation text
     $.getJSON("https://raw.githubusercontent.com/beacabdan/workout/master/motivacion.json", function(data) { motivacion = data; }).then(() => addMotivation());
+    
+    var wod = document.getElementById("wod");
+    wod.onclick = onButtonWod;
+    var light = document.getElementById("light");
+    light.onclick = onButtonTonification;
 
     carousel();
+}
+
+function onButtonWod()
+{    
+    hideStart();    
+    console.log("WOD button clicked");
+}
+
+function onButtonTonification()
+{
+    hideStart();
+    console.log("Light button clicked");
+}
+
+function hideStart()
+{
+    myStopFunction(carouselTimer);
+    var main = document.getElementById("main");
+    main.style.display = "none";
+    main = document.getElementById("slideshow");
+    main.style.display = "none";
+    main = document.getElementById("wod-section");
+    main.style.display = "block";
 }
 
 function addMotivation()
@@ -82,5 +113,9 @@ function getMonth()
     carouselIndex++;
     if (carouselIndex > x.length) {carouselIndex = 1}    
     x[carouselIndex-1].style.display = "block";  
-    setTimeout(carousel, 4000);    
+    carouselTimer = setTimeout(carousel, 6000);    
+  }
+
+  function myStopFunction(myVar) {
+    clearTimeout(myVar);
   }
