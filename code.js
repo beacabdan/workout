@@ -7,13 +7,14 @@ function init()
     var x = document.getElementById("mainTitle");
     x.innerText = getWeekDay() + ", " + d.getDate() + " de " + getMonth();
 
-    $.getJSON("https://raw.githubusercontent.com/beacabdan/workout/master/motivacion.json", function(data) {
-        motivacion = data;
-        document.getElementById("motivacion").innerText = motivacion.beneficios[Math.floor(Math.random()*motivacion.beneficios.length)]
-    });
-    
+    $.getJSON("https://raw.githubusercontent.com/beacabdan/workout/master/motivacion.json", function(data) { motivacion = data; }).then(() => addMotivation());
 
     carousel();
+}
+
+function addMotivation()
+{
+    document.getElementById("motivacion").innerHTML = motivacion.beneficios[Math.floor(Math.random()*motivacion.beneficios.length)] + "</br>Además, el deporte tiene tres cualidades que nos apasionan a todos:"
 }
 
 function whichWorkout()
