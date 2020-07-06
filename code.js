@@ -1,10 +1,12 @@
+var carouselIndex = 0;
+
 function init()
 {
     var d = new Date();
     var x = document.getElementById("mainTitle");
-    x.innerText = getWeekDay() + " Workout (" + getMonth() + " " + d.getDate() + ")";
+    x.innerText = getWeekDay() + ", " + getMonth() + " " + d.getDate();
 
-    
+    carousel();
 }
 
 function whichWorkout()
@@ -61,4 +63,16 @@ function getMonth()
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
     return day;
+  }
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    carouselIndex++;
+    if (carouselIndex > x.length) {carouselIndex = 1}    
+    x[carouselIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
   }
