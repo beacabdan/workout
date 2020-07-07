@@ -1,6 +1,9 @@
 var carouselIndex = 0;
 var carouselTimer = null;
 var motivacion = null;
+var ejercicios = null;
+// workout json https://spreadsheets.google.com/feeds/cells/10wsaGvSqAj5Kb0smB6sLl9kXPP_D_9S9yUEMqAumP24/1/public/full?alt=json
+
 
 function init()
 {
@@ -11,6 +14,7 @@ function init()
 
     //change motivation text
     $.getJSON("https://raw.githubusercontent.com/beacabdan/workout/master/motivacion.json", function(data) { motivacion = data; }).then(() => addMotivation());
+    $.getJSON("https://spreadsheets.google.com/feeds/cells/10wsaGvSqAj5Kb0smB6sLl9kXPP_D_9S9yUEMqAumP24/1/public/full?alt=json", function(data) { ejercicios = data; });
     
     var wod = document.getElementById("wod");
     wod.onclick = onButtonWod;
@@ -24,12 +28,15 @@ function onButtonWod()
 {    
     hideStart();    
     console.log("WOD button clicked");
+    var tipoEntreno = 0;
+
 }
 
 function onButtonTonification()
 {
     hideStart();
     console.log("Light button clicked");
+    var tipoEntreno = 1;
 }
 
 function hideStart()
