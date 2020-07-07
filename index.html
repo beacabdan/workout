@@ -25,11 +25,11 @@
       <h1 class="w3-hide-medium w3-hide-large" id="workoutDiaSmall">Entrenamiento</h1>
     </div>
 
-      <div class="w3-padding-32">
-        <div class="w3-bar w3-border">
-          <button  href="#wodDiv" class="w3-button w3-hover-red" id="wod">Workout of the day</button>
-          <button class="w3-button w3-hover-red" id="light">Tonificación</button>
-          <button class="w3-button w3-hover-red" disabled>Hoy paso de deporte</button>
+      <div class="w3-padding-32" id="trainingBtns">
+        <div class="w3-bar">
+          <button  href="#wodDiv" class="w3-button w3-light-grey w3-hover-red" id="wod">Workout of the day</button>
+          <button class="w3-button w3-light-grey w3-hover-red" id="light">Tonificación</button>
+          <button class="w3-button w3-light-grey w3-hover-red w3-hide-small" disabled>Hoy paso de deporte</button>
         </div>
       </div>
     </header>
@@ -43,15 +43,15 @@
         <div class="w3-row w3-padding-32">
           <div class="w3-third">
             <p>Fácil</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/facil.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:60%">
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/facil.jpg" class="w3-margin-bottom w3-hover-opacity w3-card" alt="Random Name" style="width:60%">
           </div>
           <div class="w3-third">
             <p>Útil</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/patada.jpg" class="w3-margin-bottom w3-hover-opacity" alt="Random Name" style="width:60%">
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/patada.jpg" class="w3-margin-bottom w3-hover-opacity w3-card" alt="Random Name" style="width:60%">
           </div>
           <div class="w3-third">
             <p>Posturil</p>
-            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/selfie.jpg" class="w3-hover-opacity" alt="Random Name" style="width:60%">
+            <img src="https://raw.githubusercontent.com/beacabdan/workout/master/images/selfie.jpg" class="w3-hover-opacity w3-card" alt="Random Name" style="width:60%">
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
     <!-- WORKOUT -->
   <div id="wodDiv">
     <span class="w3-button w3-top w3-xlarge w3-light-grey w3-text-grey w3-hover-text-black" style="width:auto;left:0; display: none;" onclick="undoHideStart()" id="goBack"><i class="fa fa-arrow-left"></i></span>
-    <section class="w3-main" id="wod-section" style="display: none;"></section>
+    <section class="w3-container" id="wod-section" style="display: none;"></section>
   </div>
   
 

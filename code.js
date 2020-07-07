@@ -24,7 +24,6 @@ function init() {
 
 function onButtonWod() {
   hideStart();
-  console.log("WOD button clicked");
   var tipoEntreno = 0;
 
   var workout = whichWorkout();
@@ -65,6 +64,9 @@ function hideStart() {
   main.style.display = "none";
   main = document.getElementById("slideshow");
   main.style.display = "none";
+  main = document.getElementById("trainingBtns");
+  main.classList.add("w3-hide-small")
+  
   main = document.getElementById("wod-section");
   main.style.display = "block";
   main.innerHTML = "";
@@ -78,6 +80,9 @@ function undoHideStart() {
   main.style.display = "block";
   main = document.getElementById("slideshow");
   main.style.display = "block";
+  main = document.getElementById("trainingBtns");
+  main.classList.remove("w3-hide-small")
+
   main = document.getElementById("wod-section");
   main.style.display = "none";
   main.innerHTML = "";
@@ -111,35 +116,44 @@ function writeWorkout(workout) {
   for (const ejercicio of workout) {
     counter++;
     var ejercDiv = document.createElement("div");
-    ejercDiv.classList.add("w3-row")
+    ejercDiv.classList.add("w3-btn")
+    ejercDiv.classList.add("w3-card")
+    ejercDiv.classList.add("w3-panel")
     ejercDiv.setAttribute("id", "ej" + counter)
+    ejercDiv.style = "width: 100%; white-space: normal;"
     container.appendChild(ejercDiv);
+    var fila = document.createElement("div");
+    fila.classList.add("w3-row")
+    ejercDiv.appendChild(fila);
     var ejercDiv2 = document.createElement("div");
-    ejercDiv2.classList.add("w3-twothird");
+    ejercDiv2.classList.add("w3-col");
+    ejercDiv2.style = "width: 70%";
     ejercDiv2.classList.add("w3-container");
     ejercDiv2.classList.add("w3-justify");
-    ejercDiv.appendChild(ejercDiv2);
-    var title = document.createElement("h1");
+    fila.appendChild(ejercDiv2);
+    var title = document.createElement("h3");
     title.classList.add("w3-text-grey");
     title.innerText = ejercicio[1];
     ejercDiv2.appendChild(title);
     var text = document.createElement("p");
     text.innerHTML = ejercicio[3];
+    text.classList.add("w3-hide-small")
     ejercDiv2.appendChild(text);
     var ejercDiv3 = document.createElement("div");
-    ejercDiv3.classList.add("w3-third");
+    ejercDiv3.classList.add("w3-rest");
+    ejercDiv3.classList.add("w3-rest");
     ejercDiv3.classList.add("w3-container");
-    ejercDiv.appendChild(ejercDiv3);
+    fila.appendChild(ejercDiv3);
     var explic = document.createElement("img");
     explic.setAttribute("alt", ejercicio[1] + " (demo)")
     explic.setAttribute("src", ejercicio[4])
     explic.classList.add("w3-padding-large");
-    explic.classList.add("w3-padding-32");
-    explic.classList.add("w3-hover-opacity");
-    explic.style = "width: 100%"
+    explic.classList.add("w3-padding-16");
+    explic.style = "width: 100%; min-width: 100px; right: 0;"
     explic.innerText = ejercicio[1];
     ejercDiv3.appendChild(explic);
   }
+
 }
 
 function cardioWorkout() {
