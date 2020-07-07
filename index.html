@@ -21,13 +21,13 @@
     <header class="w3-panel w3-center" style="padding:64px 16px">
       <div class="w3-opacity">
       <h1 class="w3-xlarge" id="mainTitle" style="text-transform: uppercase">Titulo</h1>
-      <h1 class="w3-hide-small">El entrenamiento de hoy</h1>
+      <h1 class="w3-hide-small" id="workoutDia">El entrenamiento de hoy</h1>
       <h1 class="w3-hide-medium w3-hide-large">Entrenamiento:</h1>
     </div>
 
       <div class="w3-padding-32">
         <div class="w3-bar w3-border">
-          <button class="w3-button w3-hover-red" id="wod">Workout of the day</button>
+          <button  href="#wodDiv" class="w3-button w3-hover-red" id="wod">Workout of the day</button>
           <button class="w3-button w3-hover-red" id="light">Tonificación</button>
           <button class="w3-button w3-hover-red" disabled>Hoy paso de deporte</button>
         </div>
@@ -68,39 +68,9 @@
     </section>
 
     <!-- WORKOUT -->
-    <div class="w3-main" id="wod-section" style="display: none;">
-      <div class="w3-row">
-        <div class="w3-twothird w3-container">
-          <h1 class="w3-text-grey">Ejercicio X</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-        </div>
-        <div class="w3-third w3-container">
-          <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-          <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-        </div>
-      </div>
-
-      <div class="w3-row w3-padding-64">
-        <div class="w3-twothird w3-container">
-          <h1 class="w3-text-grey">Ejercicio Y</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-        </div>
-        <div class="w3-third w3-container">
-          <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-          <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-        </div>
-      </div>
-    </div>
+    <div id="wodDiv">
+    <section class="w3-main" id="wod-section" style="display: none;"></section>
+  </div>
   
 
   <!-- Automatic Slideshow Images -->
