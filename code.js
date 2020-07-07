@@ -34,6 +34,7 @@ function onButtonWod() {
 function onButtonTonification() {
   hideStart();
   document.getElementById("workoutDia").innerText = "Un poco de tonificación";
+  document.getElementById("workoutDiaSmall").innerText = "Tonificación";
   var tipoEntreno = 1;
 
   var thisWorkout = [];
@@ -67,6 +68,24 @@ function hideStart() {
   main = document.getElementById("wod-section");
   main.style.display = "block";
   main.innerHTML = "";
+  main = document.getElementById("goBack");
+  main.style.display = "block";
+}
+
+function undoHideStart() {
+  carousel();
+  var main = document.getElementById("main");
+  main.style.display = "block";
+  main = document.getElementById("slideshow");
+  main.style.display = "block";
+  main = document.getElementById("wod-section");
+  main.style.display = "none";
+  main.innerHTML = "";
+  main = document.getElementById("goBack");
+  main.style.display = "none";
+
+  document.getElementById("workoutDia").innerText = "El entrenamiento de hoy:";
+  document.getElementById("workoutDiaSmall").innerText = "Entrenamiento";
 }
 
 function addMotivation() {
@@ -78,6 +97,7 @@ function whichWorkout() {
   var day = getDayOfYear();
   var workout = day % 5;
   document.getElementById("workoutDia").innerText = "WOD: " + cathegory[workout];
+  document.getElementById("workoutDiaSmall").innerText = "WOD";
 
   if (workout > -1)
   {

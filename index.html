@@ -21,8 +21,8 @@
     <header class="w3-panel w3-center" style="padding:64px 16px">
       <div class="w3-opacity">
       <h1 class="w3-xlarge" id="mainTitle" style="text-transform: uppercase">Titulo</h1>
-      <h1 class="w3-hide-small" id="workoutDia">El entrenamiento de hoy</h1>
-      <h1 class="w3-hide-medium w3-hide-large">Entrenamiento:</h1>
+      <h1 class="w3-hide-small" id="workoutDia">El entrenamiento de hoy:</h1>
+      <h1 class="w3-hide-medium w3-hide-large" id="workoutDiaSmall">Entrenamiento</h1>
     </div>
 
       <div class="w3-padding-32">
@@ -68,7 +68,8 @@
     </section>
 
     <!-- WORKOUT -->
-    <div id="wodDiv">
+  <div id="wodDiv">
+    <span class="w3-button w3-top w3-xlarge w3-light-grey w3-text-grey w3-hover-text-black" style="width:auto;left:0; display: none;" onclick="undoHideStart()" id="goBack"><i class="fa fa-arrow-left"></i></span>
     <section class="w3-main" id="wod-section" style="display: none;"></section>
   </div>
   
