@@ -59,38 +59,30 @@ function onButtonTonification() {
 
 function hideStart() {
   myStopFunction(carouselTimer);
-  var main = document.getElementById("main");
-  main.style.display = "none";
-  main = document.getElementById("slideshow");
-  main.style.display = "none";
-  main = document.getElementById("trainingBtns");
-  main.classList.add("w3-hide-small")
+  document.getElementById("main").style.display = "none";
+  document.getElementById("slideshow").style.display = "none";
+  document.getElementById("trainingBtns").classList.add("w3-hide-small")
   
-  main = document.getElementById("wod-section");
+  var main = document.getElementById("wod-section");
   main.style.display = "block";
   main.innerHTML = "";
-  main = document.getElementById("goBack");
-  main.style.display = "block";
-  main = document.getElementById("playWorkout");
-  main.style.display = "block";
+  document.getElementById("goBack").style.display = "block";
+  document.getElementById("playWorkout").style.display = "block";
 }
 
 function undoHideStart() {
   carousel();
-  var main = document.getElementById("main");
-  main.style.display = "block";
-  main = document.getElementById("slideshow");
-  main.style.display = "block";
-  main = document.getElementById("trainingBtns");
-  main.classList.remove("w3-hide-small")
+  document.getElementById("main").style.display = "block";
+  document.getElementById("slideshow").style.display = "block";
+  document.getElementById("trainingBtns").classList.remove("w3-hide-small")
 
-  main = document.getElementById("wod-section");
+  var main = document.getElementById("wod-section");
   main.style.display = "none";
   main.innerHTML = "";
-  main = document.getElementById("goBack");
-  main.style.display = "none";
-  main = document.getElementById("playWorkout");
-  main.style.display = "none";
+  document.getElementById("goBack").style.display = "none";
+  document.getElementById("playWorkout").style.display = "none";
+
+  document.getElementById("modal").style.display = "none";
 
   document.getElementById("workoutDia").innerText = "El entrenamiento de hoy:";
   document.getElementById("workoutDiaSmall").innerText = "Entrenamiento";
