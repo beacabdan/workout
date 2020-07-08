@@ -62,7 +62,9 @@ function hideStart() {
   document.getElementById("main").style.display = "none";
   document.getElementById("slideshow").style.display = "none";
   document.getElementById("trainingBtns").classList.add("w3-hide-small")
+  document.getElementById("greyFooter").classList.add("w3-hide-small");
   
+
   var main = document.getElementById("wod-section");
   main.style.display = "block";
   main.innerHTML = "";
@@ -74,7 +76,8 @@ function undoHideStart() {
   carousel();
   document.getElementById("main").style.display = "block";
   document.getElementById("slideshow").style.display = "block";
-  document.getElementById("trainingBtns").classList.remove("w3-hide-small")
+  document.getElementById("trainingBtns").classList.remove("w3-hide-small");
+  document.getElementById("greyFooter").classList.remove("w3-hide-small");
 
   var main = document.getElementById("wod-section");
   main.style.display = "none";
