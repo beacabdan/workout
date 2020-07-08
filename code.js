@@ -4,7 +4,6 @@ var motivacion = null;
 var ejerciciosJson = null;
 var ejercicios = {};
 
-
 function init() {
   //change title
   var d = new Date();
@@ -72,6 +71,8 @@ function hideStart() {
   main.innerHTML = "";
   main = document.getElementById("goBack");
   main.style.display = "block";
+  main = document.getElementById("playWorkout");
+  main.style.display = "block";
 }
 
 function undoHideStart() {
@@ -87,6 +88,8 @@ function undoHideStart() {
   main.style.display = "none";
   main.innerHTML = "";
   main = document.getElementById("goBack");
+  main.style.display = "none";
+  main = document.getElementById("playWorkout");
   main.style.display = "none";
 
   document.getElementById("workoutDia").innerText = "El entrenamiento de hoy:";
@@ -115,12 +118,14 @@ function writeWorkout(workout) {
   var container = document.getElementById("wod-section");
   for (const ejercicio of workout) {
     counter++;
-    var ejercDiv = document.createElement("div");
-    ejercDiv.classList.add("w3-btn")
-    ejercDiv.classList.add("w3-card")
-    ejercDiv.classList.add("w3-panel")
-    ejercDiv.setAttribute("id", "ej" + counter)
-    ejercDiv.style = "width: 100%; white-space: normal;"
+    var ejercDiv = document.createElement("button");
+    ejercDiv.classList.add("w3-btn");
+    ejercDiv.classList.add("w3-card");
+    ejercDiv.classList.add("w3-panel");
+    ejercDiv.setAttribute("id", "ej" + counter);
+    ejercDiv.value = ejercicio;
+    ejercDiv.style = "width: 100%; white-space: normal;";
+    ejercDiv.onclick = openModal;
     container.appendChild(ejercDiv);
     var fila = document.createElement("div");
     fila.classList.add("w3-row")
@@ -137,7 +142,7 @@ function writeWorkout(workout) {
     ejercDiv2.appendChild(title);
     var text = document.createElement("p");
     text.innerHTML = ejercicio[3];
-    text.classList.add("w3-hide-small")
+    text.classList.add("w3-hide-small");
     ejercDiv2.appendChild(text);
     var ejercDiv3 = document.createElement("div");
     ejercDiv3.classList.add("w3-rest");
@@ -145,15 +150,21 @@ function writeWorkout(workout) {
     ejercDiv3.classList.add("w3-container");
     fila.appendChild(ejercDiv3);
     var explic = document.createElement("img");
-    explic.setAttribute("alt", ejercicio[1] + " (demo)")
-    explic.setAttribute("src", ejercicio[4])
+    explic.setAttribute("alt", ejercicio[1] + " (demo)");
+    explic.setAttribute("src", ejercicio[4]);
     explic.classList.add("w3-padding-large");
     explic.classList.add("w3-padding-16");
-    explic.style = "width: 100%; min-width: 100px; right: 0;"
+    explic.style = "width: 100%; min-width: 100px; right: 0;";
     explic.innerText = ejercicio[1];
     ejercDiv3.appendChild(explic);
   }
+}
 
+function openModal() {
+  var modal = document.getElementById("modal");
+  modal.style.display = "block";
+  modal = document.getElementById("modalContent");
+  modal.innerHTML = "<p>" + this.value + "</p>";
 }
 
 function cardioWorkout() {
