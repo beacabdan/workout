@@ -98,13 +98,13 @@ function addMotivation() {
 function whichWorkout() {
   var cathegory = ["Cardio", "HIIT", "Pilates", "Yoga", "Weight Training"]
   var day = getDayOfYear();
-  var workout = day % 5;
+  var workout = day % cathegory.length;
   document.getElementById("workoutDia").innerText = "WOD: " + cathegory[workout];
-  document.getElementById("workoutDiaSmall").innerText = "WOD";
+  document.getElementById("workoutDiaSmall").innerText = cathegory[workout];
 
   if (workout > -1)
   {
-    return cardioWorkout();
+    return fuerzaWorkout();
   }
 }
 
@@ -127,18 +127,22 @@ function writeWorkout(workout) {
     ejercDiv.appendChild(fila);
     var ejercDiv2 = document.createElement("div");
     ejercDiv2.classList.add("w3-col");
-    ejercDiv2.style = "width: 70%";
+    ejercDiv2.style = "width: 65%";
     ejercDiv2.classList.add("w3-container");
     ejercDiv2.classList.add("w3-justify");
     fila.appendChild(ejercDiv2);
     var title = document.createElement("h3");
     title.classList.add("w3-text-grey");
+    title.style.textAlign="left"
     title.innerText = ejercicio[1];
     ejercDiv2.appendChild(title);
     var text = document.createElement("p");
-    text.innerHTML = ejercicio[3];
-    text.classList.add("w3-hide-small");
+    text.innerHTML = escribeReps(ejercicio[0], ejercicio[5], ejercicio[6], ejercicio[7]);
     ejercDiv2.appendChild(text);
+    // text = document.createElement("p");
+    // text.innerHTML = ejercicio[3];
+    // text.classList.add("w3-hide-small");
+    // ejercDiv2.appendChild(text);
     var ejercDiv3 = document.createElement("div");
     ejercDiv3.classList.add("w3-rest");
     ejercDiv3.classList.add("w3-rest");
@@ -149,10 +153,16 @@ function writeWorkout(workout) {
     explic.setAttribute("src", ejercicio[4]);
     explic.classList.add("w3-padding-large");
     explic.classList.add("w3-padding-16");
-    explic.style = "width: 100%; min-width: 100px; right: 0;";
+    explic.style = "width: 100%; min-width: 150px; left: 0;";
     explic.innerText = ejercicio[1];
     ejercDiv3.appendChild(explic);
   }
+}
+
+function escribeReps(type, sets, reps, units) {
+  if (sets < -1) return Math.abs(sets) + " intervalos de " + reps + " " + units
+  if (sets < 2) return reps + " " + units
+  return sets + "x" + reps + " " + units
 }
 
 function openModal() {
@@ -164,24 +174,101 @@ function openModal() {
 
 function cardioWorkout() {
   var thisWorkout = [];
+  var counter = 0;
+
   //calentamiento
   var someExercises = ejercicios.calentamiento.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
+  for (const exercise of someExercises)
+    if (exercise[8] == "-" || exercise[8] == "Ruido" )
+    {
+      thisWorkout.push(exercise);
+      break;
+    }
 
   //ejercicio
   someExercises = ejercicios.cardio.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
-  thisWorkout.push(someExercises[1]);
+  if (Math.random() > 0.5) {
+    for (const exercise of someExercises)
+      if (exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" || exercise[1] == "Patinar" && exercise[8] != "Esterilla") {
+        if (Math.random() > 0.5) {
+          exercise[6] = "30"
+          exercise[7] = "minutos"
+        }
+        thisWorkout.push(exercise);
+        break;
+      }
+  }
+  else {
+    counter = 3
+    for (const exercise of someExercises)
+      if (counter > 0 && !(exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" || exercise[1] == "Patinar") && exercise[8] != "Esterilla") {
+        thisWorkout.push(exercise);
+        counter--;
+      }
+  }
 
-  //enfriamiento
   someExercises = ejercicios.calentamiento.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
+  for (const exercise of someExercises)
+    if (exercise[8] == "-")
+    {
+      thisWorkout.push(exercise);
+      break;
+    }
+
+  return thisWorkout;
+}
+
+function fuerzaWorkout() {
+  var thisWorkout = [];
+  var counter;
+
+  //calentamiento
+  var someExercises = ejercicios.calentamiento.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 3;
+  for (const exercise of someExercises) {
+    thisWorkout.push(exercise);
+    counter--;
+    if (counter == 0) break;
+  }
+
+  someExercises = ejercicios.fuerza.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 3;
+  for (const exercise of someExercises) {
+    thisWorkout.push(exercise);
+    counter--;
+    if (counter == 0) break;
+  }
+
+  someExercises = ejercicios.cardio.ejercicios;
+  someExercises = shuffle(someExercises);
+  for (const exercise of someExercises) 
+    if (exercise[8] == "Esterilla" || exercise[8] == "Gomas" || exercise[8] == "Esterilla y gomas") {
+    thisWorkout.push(exercise);
+    break;
+  }
+  
+  someExercises = ejercicios.fuerza.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 3;
+  for (const exercise of someExercises) {
+    thisWorkout.push(exercise);
+    counter--;
+    if (counter == 0) break;
+  }
+
   someExercises = ejercicios.estiramientos.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
+  counter = 3;
+  for (const exercise of someExercises) {
+    thisWorkout.push(exercise);
+    counter--;
+    if (counter == 0) break;
+  }
 
   return thisWorkout;
 }
@@ -239,7 +326,7 @@ function myStopFunction(myVar) {
 
 function getExercises() {
   var counter = 0;
-  var columnas = 5;
+  var columnas = 9;
   var ejerciciosArray = [];
 
   var ejercicio = [];
