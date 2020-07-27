@@ -47,7 +47,6 @@ function onButtonTonification() {
   thisWorkout.push(someExercises[0]);
   thisWorkout.push(someExercises[1]);
   thisWorkout.push(someExercises[2]);
-  thisWorkout.push(someExercises[4]);
 
   //enfriamiento
   someExercises = ejercicios.estiramientos.ejercicios;
@@ -96,19 +95,21 @@ function addMotivation() {
 }
 
 function whichWorkout() {
-  var cathegory = ["Cardio", "HIIT", "Pilates", "Yoga", "Weight Training"]
+  var cathegory = ["Cardio", "Pilates", "HIIT", "Flexibility", "Weight Training", "Cardio", "Pilates", "Weight Training"]
   var day = getDayOfYear();
   var workout = day % cathegory.length;
   document.getElementById("workoutDia").innerText = "WOD: " + cathegory[workout];
   document.getElementById("workoutDiaSmall").innerText = cathegory[workout];
 
-  if (workout > -1)
-  {
-    return fuerzaWorkout();
-  }
+  if (cathegory[workout] == "Cardio") return cardioWorkout();
+  else if (cathegory[workout] == "Pilates") return pilatesWorkout();
+  else return fuerzaWorkout();
 }
 
 function writeWorkout(workout) {
+  for (const exercise of workout) console.log(exercise[1], exercise[5], exercise[6], exercise[7], exercise[8]);
+  console.log("########")
+
   var counter = 0;
   var container = document.getElementById("wod-section");
   for (const ejercicio of workout) {
@@ -118,7 +119,7 @@ function writeWorkout(workout) {
     ejercDiv.classList.add("w3-card");
     ejercDiv.classList.add("w3-panel");
     ejercDiv.setAttribute("id", "ej" + counter);
-    ejercDiv.value = ejercicio;
+    ejercDiv.value = "Objetivo: " + ejercicio[2] + "<br>" + ejercicio[3];
     ejercDiv.style = "width: 100%; white-space: normal;";
     ejercDiv.onclick = openModal;
     container.appendChild(ejercDiv);
@@ -139,12 +140,11 @@ function writeWorkout(workout) {
     var text = document.createElement("p");
     text.innerHTML = escribeReps(ejercicio[0], ejercicio[5], ejercicio[6], ejercicio[7]);
     ejercDiv2.appendChild(text);
-    // text = document.createElement("p");
-    // text.innerHTML = ejercicio[3];
-    // text.classList.add("w3-hide-small");
-    // ejercDiv2.appendChild(text);
+    text = document.createElement("p");
+    text.innerHTML = ejercicio[3];
+    text.classList.add("w3-hide-small");
+    ejercDiv2.appendChild(text);
     var ejercDiv3 = document.createElement("div");
-    ejercDiv3.classList.add("w3-rest");
     ejercDiv3.classList.add("w3-rest");
     ejercDiv3.classList.add("w3-container");
     fila.appendChild(ejercDiv3);
@@ -209,13 +209,49 @@ function cardioWorkout() {
       }
   }
 
-  someExercises = ejercicios.calentamiento.ejercicios;
+  someExercises = ejercicios.estiramientogeneral.ejercicios;
   someExercises = shuffle(someExercises);
+  thisWorkout.push(someExercises[0]);
+
+  return thisWorkout;
+}
+
+function pilatesWorkout() {
+  var thisWorkout = [];
+  var counter = 0;
+
+  //calentamiento
+  var someExercises = ejercicios.calentamiento.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 0;
   for (const exercise of someExercises)
-    if (exercise[8] == "-")
+    if (exercise[9] == 1)
     {
       thisWorkout.push(exercise);
-      break;
+      counter++;
+      if (counter > 1) break;
+    }
+
+  someExercises = ejercicios.core.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 0;
+  for (const exercise of someExercises)
+    if (exercise[9] == 1)
+    {
+      thisWorkout.push(exercise);
+      counter++;
+      if (counter > 2) break;
+    }
+
+  someExercises = ejercicios.estiramientos.ejercicios;
+  someExercises = shuffle(someExercises);
+  counter = 0;
+  for (const exercise of someExercises)
+    if (exercise[9] == 1)
+    {
+      thisWorkout.push(exercise);
+      counter++;
+      if (counter > 2) break;
     }
 
   return thisWorkout;
@@ -225,10 +261,13 @@ function fuerzaWorkout() {
   var thisWorkout = [];
   var counter;
 
+  var n = new Date().getHours();
+  n = Math.round(n/24);
+
   //calentamiento
   var someExercises = ejercicios.calentamiento.ejercicios;
   someExercises = shuffle(someExercises);
-  counter = 3;
+  counter = 2;
   for (const exercise of someExercises) {
     thisWorkout.push(exercise);
     counter--;
@@ -261,14 +300,9 @@ function fuerzaWorkout() {
     if (counter == 0) break;
   }
 
-  someExercises = ejercicios.estiramientos.ejercicios;
+  someExercises = ejercicios.estiramientogeneral.ejercicios;
   someExercises = shuffle(someExercises);
-  counter = 3;
-  for (const exercise of someExercises) {
-    thisWorkout.push(exercise);
-    counter--;
-    if (counter == 0) break;
-  }
+  thisWorkout.push(someExercises[0]);
 
   return thisWorkout;
 }
@@ -326,7 +360,7 @@ function myStopFunction(myVar) {
 
 function getExercises() {
   var counter = 0;
-  var columnas = 9;
+  var columnas = 10;
   var ejerciciosArray = [];
 
   var ejercicio = [];
