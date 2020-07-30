@@ -103,6 +103,8 @@ function whichWorkout() {
 
   if (cathegory[workout] == "Cardio") return cardioWorkout();
   else if (cathegory[workout] == "Pilates") return pilatesWorkout();
+  else if (cathegory[workout] == "HIIT") return cardioWorkout();
+  else if (cathegory[workout] == "Weight Training") return fuerzaWorkout();
   else return fuerzaWorkout();
 }
 
@@ -191,7 +193,7 @@ function cardioWorkout() {
   someExercises = shuffle(someExercises);
   if (Math.random() > 0.5) {
     for (const exercise of someExercises)
-      if (exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" || exercise[1] == "Patinar" && exercise[8] != "Esterilla") {
+      if (exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" && exercise[8] != "Esterilla") {
         if (Math.random() > 0.5) {
           exercise[6] = "30"
           exercise[7] = "minutos"
@@ -203,11 +205,52 @@ function cardioWorkout() {
   else {
     counter = 3
     for (const exercise of someExercises)
-      if (counter > 0 && !(exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" || exercise[1] == "Patinar") && exercise[8] != "Esterilla") {
+      if (counter > 0 && !(exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking") && exercise[8] != "Esterilla") {
         thisWorkout.push(exercise);
         counter--;
       }
   }
+
+  someExercises = ejercicios.estiramientogeneral.ejercicios;
+  someExercises = shuffle(someExercises);
+  thisWorkout.push(someExercises[0]);
+
+  return thisWorkout;
+}
+
+function hiitWorkout() {
+  var thisWorkout = [];
+  var counter = 0;
+
+  //calentamiento
+  var someExercises = ejercicios.calentamiento.ejercicios;
+  someExercises = shuffle(someExercises);
+  for (const exercise of someExercises)
+    if (exercise[8] == "-" || exercise[8] == "Ruido" )
+    {
+      thisWorkout.push(exercise);
+      break;
+    }
+
+  //ejercicio
+  someExercises = ejercicios.cardio.ejercicios;
+  someExercises = shuffle(someExercises);
+  for (const exercise of someExercises)
+    if (exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking" && exercise[8] != "Esterilla") {
+      if (Math.random() > 0.5) {
+        exercise[6] = "30"
+        exercise[7] = "minutos"
+      }
+      thisWorkout.push(exercise);
+      break;
+    }
+  counter = 3
+  for (const exercise of someExercises)
+    if (counter > 0 && !(exercise[1] == "Correr" || exercise[1] == "Trail Running / Walking") && exercise[8] != "Esterilla") {
+      thisWorkout.push(exercise);
+      counter--;
+    }
+  
 
   someExercises = ejercicios.estiramientogeneral.ejercicios;
   someExercises = shuffle(someExercises);
@@ -261,14 +304,12 @@ function fuerzaWorkout() {
   var thisWorkout = [];
   var counter;
 
-  var n = new Date().getHours();
-  n = Math.round(n/24);
-
   //calentamiento
   var someExercises = ejercicios.calentamiento.ejercicios;
   someExercises = shuffle(someExercises);
   counter = 2;
   for (const exercise of someExercises) {
+    if (exercise[9] == 0) continue;
     thisWorkout.push(exercise);
     counter--;
     if (counter == 0) break;
@@ -278,6 +319,7 @@ function fuerzaWorkout() {
   someExercises = shuffle(someExercises);
   counter = 3;
   for (const exercise of someExercises) {
+    if (exercise[2] == "Piernas") continue;
     thisWorkout.push(exercise);
     counter--;
     if (counter == 0) break;
@@ -286,15 +328,17 @@ function fuerzaWorkout() {
   someExercises = ejercicios.cardio.ejercicios;
   someExercises = shuffle(someExercises);
   for (const exercise of someExercises) 
-    if (exercise[8] == "Esterilla" || exercise[8] == "Gomas" || exercise[8] == "Esterilla y gomas") {
+  {
+    if (exercise[9] == 0) continue;
     thisWorkout.push(exercise);
     break;
   }
   
   someExercises = ejercicios.fuerza.ejercicios;
   someExercises = shuffle(someExercises);
-  counter = 3;
+  counter = 2;
   for (const exercise of someExercises) {
+    if (exercise[9] == 0) continue;
     thisWorkout.push(exercise);
     counter--;
     if (counter == 0) break;
