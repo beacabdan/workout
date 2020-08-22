@@ -1,3 +1,73 @@
+html, body, h1, h2,h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+}
 h1 {
+    letter-spacing: 4px;
     text-align: center;
+}
+
+:root {
+    --border-radius: 0px;
+    --card-margin: 2em 0;
+    --card-padding: 0.5em 1em 1em 1em;
+  }
+  
+  .card {
+    font-family: 'Roboto', sans-serif;
+    background: white;
+    margin: var(--card-margin);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    display: flex;
+    border-radius: var(--border-radius);
+  }
+  
+  .content {
+    flex: 3;
+    padding: var(--card-padding);
+    color: rgb(80, 80, 80);
+  }
+  
+  .image {
+    flex: 1;
+    display: flex;
+    min-width: 64px;
+  }
+  
+  .image img {
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  i.fa {
+      margin: 0 1em;
+  }
+
+  .content h3 {
+    word-break: break-all;
+    max-width: 80%;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+    font-size: 1.3em;
+}
+
+  .content p {
+      margin: 5px 0;
+  }
+
+  .badges {
+	list-style: none;
+	padding: 0;
+    margin: 0;
+    font-size: 0.75em;
+}
+
+.badges li {
+	display: inline-block;
+	margin-right: 10px;
+	background-color: #dedede;
+	padding: 2px 6px;
+	border-radius: calc(1em + 4px);
 }

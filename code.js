@@ -109,6 +109,52 @@ function whichWorkout() {
 }
 
 function writeWorkout(workout) {
+  var counter = 0;
+  var container = document.getElementById("wod-section");
+  for (const ejercicio of workout) {
+    counter++;
+    var card = document.createElement("div");
+    var content = document.createElement("div");
+    var image_container = document.createElement("div");
+    var image = document.createElement("img");
+    var title = document.createElement("h3");
+    var text = document.createElement("p");
+    var objetivo = document.createElement("p");
+    var badges = document.createElement("ul");
+    
+    title.innerHTML = ejercicio[1];
+    text.innerHTML = escribeReps(ejercicio[0], ejercicio[5], ejercicio[6], ejercicio[7]);
+    objetivo.innerHTML = ejercicio[3];
+    image.src = ejercicio[4];
+    
+    var badge_list = ejercicio[2].replace(", ", ",").replace(" ,", ",").split(",");
+    for (const badge of badge_list) {
+      var bg_li = document.createElement("li");
+      bg_li.innerHTML = "#" + badge.toLowerCase();
+      badges.appendChild(bg_li);
+    }
+
+    badges.classList.add("badges")
+    card.classList.add("card");
+    content.classList.add("content");
+    image_container.classList.add("image");
+    objetivo.classList.add("w3-hide-small");
+
+    content.appendChild(title);
+    content.appendChild(text);
+    content.appendChild(objetivo);
+    content.appendChild(badges);
+    card.appendChild(content);
+    image_container.appendChild(image);
+    card.appendChild(image_container);
+    container.appendChild(card);    
+
+    card.setAttribute("data-value", ejercicio[2] + "<br>" + ejercicio[3])
+    card.onclick = openModal;
+  }
+}
+
+function writeWorkoutOld(workout) {
   for (const exercise of workout) console.log(exercise[1], exercise[5], exercise[6], exercise[7], exercise[8]);
   console.log("########")
 
@@ -171,7 +217,7 @@ function openModal() {
   var modal = document.getElementById("modal");
   modal.style.display = "block";
   modal = document.getElementById("modalContent");
-  modal.innerHTML = "<p>" + this.value + "</p>";
+  modal.innerHTML = "<p>" + this.getAttribute("data-value") + "</p>";
 }
 
 function cardioWorkout() {
