@@ -39,19 +39,36 @@ function onButtonTonification() {
   //calentamiento
   var someExercises = ejercicios.calentamiento.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
+  for (const exercise of someExercises)
+      if (exercise[10] == 0) {
+        thisWorkout.push(exercise);
+        break;
+      }
 
   //ejercicio
-  someExercises = ejercicios.tonificación.ejercicios;
+  someExercises = ejercicios.tonificación.ejercicios.concat(ejercicios.fuerza.ejercicios).concat(ejercicios.core.ejercicios);
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
-  thisWorkout.push(someExercises[1]);
-  thisWorkout.push(someExercises[2]);
+  counter = 5
+  while (counter > 0) {
+    for (const exercise of someExercises) {
+        if (exercise[10] == 0) {
+          thisWorkout.push(exercise);
+          counter--;
+        }
+        if (counter <= 0) {
+          break;
+        }
+      }
+  }
 
   //enfriamiento
-  someExercises = ejercicios.estiramientos.ejercicios;
+  someExercises = ejercicios.estiramientogeneral.ejercicios;
   someExercises = shuffle(someExercises);
-  thisWorkout.push(someExercises[0]);
+  for (const exercise of someExercises)
+      if (exercise[10] == 0) {
+        thisWorkout.push(exercise);
+        break;
+      }
 
   writeWorkout(thisWorkout);
 }
@@ -133,6 +150,12 @@ function writeWorkout(workout) {
       bg_li.innerHTML = "#" + badge.toLowerCase();
       badges.appendChild(bg_li);
     }
+    if (ejercicio[10] == 0) {
+      var bg_li = document.createElement("li");
+      bg_li.innerHTML = "#notstanding";
+      badges.appendChild(bg_li);
+    }
+
 
     badges.classList.add("badges")
     card.classList.add("card");
@@ -450,7 +473,7 @@ function myStopFunction(myVar) {
 
 function getExercises() {
   var counter = 0;
-  var columnas = 10;
+  var columnas = 11;
   var ejerciciosArray = [];
 
   var ejercicio = [];

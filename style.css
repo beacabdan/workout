@@ -44,7 +44,7 @@ h1 {
 
   .content h3 {
     word-break: break-all;
-    max-width: 80%;
+    max-width: 70%;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
